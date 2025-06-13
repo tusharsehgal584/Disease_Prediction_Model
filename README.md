@@ -1,4 +1,4 @@
-text
+
 # Disease Prediction System using Machine Learning and Flask
 
 A web-based application that predicts diseases based on selected symptoms using a machine learning model.
