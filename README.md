@@ -1,4 +1,3 @@
-
 # Disease Prediction System using Machine Learning and Flask
 
 A web-based application that predicts diseases based on selected symptoms using a machine learning model.
@@ -12,46 +11,26 @@ A web-based application that predicts diseases based on selected symptoms using 
 
 ## Project Structure
 
-DISEASE_PREDICTION-MODEL/
-│
-├── app.py
-├── data/
-│ ├── Testing.csv
-│ └── Training.csv
-├── diseaseprediction.py
-├── README.md
-├── requirements.txt
-├── static/
-│ ├── css/style.css
-│ └── images/
-│ ├── bg.jpg
-│ └── logo.png
-├── templates/
-│ ├── includes/default.html
-│ ├── disease_predict.html
-│ ├── find_doctor.html
-│ └── home.html
-
-text
+![image](https://github.com/user-attachments/assets/4e05e5a8-882c-4b75-8161-ee67349b2902)
 
 ## Getting Started
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/tusharsehgal584/Disease-Prediction-system-using-Machine-Learning-and-Flask.git
-   cd Disease-Prediction-system-using-Machine-Learning-and-Flask
-Install dependencies:
+git clone https://github.com/tusharsehgal584/Disease-Prediction-system-using-Machine-Learning-and-Flask.git
+cd Disease-Prediction-system-using-Machine-Learning-and-Flask
 
-bash
+2. Install dependencies:
 pip install -r requirements.txt
-Run the app:
 
-bash
+3. Run the app:
 python app.py
-The app will be available at http://127.0.0.1:8000.
 
-License
+The app will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## License
+
 MIT License
 
-Author
-Tushar Sehgal
+## Author
+
+[Tushar Sehgal](https://github.com/tusharsehgal584)
