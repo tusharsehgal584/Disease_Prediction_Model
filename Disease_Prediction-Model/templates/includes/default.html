@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Disease Prediction System</h1>
+            <p>Select your symptoms to get a disease prediction</p>
+        </div>
+
+        <form action="/predict" method="POST">
+            {% for i in range(1, 6) %}
+            <div class="form-group">
+                <label for="Symptom{{ i }}">Symptom {{ i }}:</label>
+                <select name="Symptom{{ i }}" id="Symptom{{ i }}">
+                    <option value="">-- Select Symptom --</option>
+                    {% for symptom in symptoms %}
+                    <option value="{{ symptom }}">{{ symptom.replace('_', ' ').title() }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-btn">🔍 Predict Disease</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .disease-name {
+            font-size: 28px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .symptoms-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .error {
+            color: #e74c3c;
+            background: #ffeaea;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% if error %}
+        <div class="error">
+            <h3>❌ Error</h3>
+            <p>{{ error }}</p>
+        </div>
+        {% else %}
+        <div class="result">
+            <h2>🔬 Prediction Result</h2>
+            <div class="disease-name">{{ disease }}</div>
+
+            {% if selected_symptoms %}
+            <div class="symptoms-list">
+                <h4>Based on symptoms:</h4>
+                <ul>
+                    {% for symptom in selected_symptoms %}
+                    <li>{{ symptom.replace('_', ' ').title() }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div style="margin-top: 30px;">
+                <form action="/find_doctor" method="POST" style="display: inline;">
+                    <input type="hidden" name="disease" value="{{ disease }}">
+                    <input type="hidden" name="location" value="">
+                    <button type="submit" class="btn btn-success">🏥 Find Doctor</button>
+                </form>
+
+                <a href="/" class="btn btn-primary">🔄 Try Again</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

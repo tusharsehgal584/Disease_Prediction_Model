@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Disease Prediction System - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background: url('{{ url_for(' static', filename=' images/bg.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .overlay {
+            background: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #444;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            margin-top: 30px;
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <h1>Welcome to the Disease Prediction System</h1>
+        <p>
+            Enter your symptoms and let our intelligent system help you predict possible diseases.<br>
+            This tool is for educational purposes and not a substitute for professional medical advice.
+        </p>
+        <a href="{{ url_for('home') }}" class="btn">Get Started</a>
+    </div>
+</body>
+
+</html>

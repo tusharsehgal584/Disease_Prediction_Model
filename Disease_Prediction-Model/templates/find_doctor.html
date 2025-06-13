@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Doctor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🏥 Find Doctor</h2>
+        
+        {% if disease %}
+        <p><strong>For condition:</strong> {{ disease }}</p>
+        {% endif %}
+        
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="location">Enter your location:</label>
+                <input type="text" id="location" name="location" placeholder="e.g., New York, NY" required>
+            </div>
+            
+            <button type="button" class="btn btn-primary" onclick="searchDoctors()">🔍 Search Doctors</button>
+            <a href="/" class="btn btn-secondary">🏠 Home</a>
+        </form>
+        
+        <div id="results" style="margin-top: 30px;"></div>
+    </div>
+    
+    <script>
+        function searchDoctors() {
+            const location = document.getElementById('location').value;
+            const disease = "{{ disease }}";
+            
+            if (location) {
+                // Create Google search URL
+                const searchQuery = `doctors near ${location} ${disease}`;
+                const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+                
+                // Open in new tab
+                window.open(googleUrl, '_blank');
+                
+                // Show local message
+                document.getElementById('results').innerHTML = `
+                    <div style="background: #e8f5e8; padding: 15px; border-radius: 5px; border-left: 4px solid #27ae60;">
+                        <h4>✅ Search Initiated</h4>
+                        <p>Opening Google search for doctors near <strong>${location}</strong> for <strong>${disease}</strong></p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
